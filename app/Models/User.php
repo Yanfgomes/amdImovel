@@ -22,7 +22,7 @@ class User extends Authenticatable
         'password',
         'cpf',
         'phone',
-        'admin',
+        'adm',
         'customer',
         'lessee',
     ];

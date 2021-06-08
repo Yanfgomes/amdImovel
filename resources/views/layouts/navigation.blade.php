@@ -65,7 +65,7 @@
                             </x-dropdown-link>
                         </form>
                         
-                        <x-dropdown-link :href="route('logout')">
+                        <x-dropdown-link :href="route('customer.view', ['id' => Auth::user()->id])">
                             {{ __('Meu Perfil') }}
                         </x-dropdown-link>
                     </x-slot>
@@ -130,8 +130,8 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
-                <x-responsive-nav-link :href="route('logout')">
-                    {{ __('My System') }}
+                <x-responsive-nav-link :href="route('customer.view', ['id' => Auth::user()->id])">
+                    {{ __('Meu Perfil') }}
                 </x-responsive-nav-link>
             </div>
         </div>

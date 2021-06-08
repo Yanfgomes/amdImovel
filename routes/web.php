@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::get('/', function () {
     return view('dashboard', compact("mensagem","imagem","firstName"));
 })->middleware(['auth'])->name('dashboard');
 
+        //return back()->with('success','Item created successfully!');
 
 Route::group(['middleware' => ['auth']], function () {
 
@@ -48,6 +50,8 @@ Route::group(['middleware' => ['auth']], function () {
     {
         Route::get('/', [UserController::class, 'index'])->name('index');
         Route::get('/new', [UserController::class, 'create'])->name('create');
+        Route::post('/store', [UserController::class, 'store'])->name('store');
+        Route::get('/view/{id}', [UserController::class, 'view'])->where('n1','[0-9]+')->name('view');
     });
 
 });

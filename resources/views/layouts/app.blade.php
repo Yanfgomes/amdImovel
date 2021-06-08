@@ -22,6 +22,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
         <script src="{{ asset('js/datatable.min.js') }}" ></script>
         <script src="{{ asset('js/jquery.mask.min.js') }}" ></script>
+        <script src="{{ asset('js/bootstrap.js') }}" ></script>
 
     </head>
     <body class="font-sans antialiased">
@@ -37,6 +38,40 @@
 
             <!-- Page Content -->
             <main>
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>    
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
+                  
+                @if ($message = Session::get('error'))
+                    <div class="alert alert-danger alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>    
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
+                
+                @if ($message = Session::get('warning'))
+                <div class="alert alert-warning alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>    
+                    <strong>{{ $message }}</strong>
+                </div>
+                @endif
+                
+                @if ($message = Session::get('info'))
+                <div class="alert alert-info alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>    
+                    <strong>{{ $message }}</strong>
+                </div>
+                @endif
+                
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">×</button>    
+                    Please check the form below for errors
+                </div>
+                @endif
                 {{ $slot }}
             </main>
         </div>

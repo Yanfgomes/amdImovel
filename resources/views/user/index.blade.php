@@ -39,7 +39,7 @@
                                 @else
                                     <td>?</td>
                                 @endif
-                                <td><a href=""><img src="{{ asset('img/eng.png') }}" width="30px" height="30px"></a></td>
+                                <td><a href="{{route('customer.view', ['id' => $user->id])}}"><img src="{{ asset('img/eng.png') }}" width="30px" height="30px"></a></td>
                             </tr>
                         @endforeach
                     </tbody>
