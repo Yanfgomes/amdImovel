@@ -3,6 +3,8 @@
     </x-slot>
 
     <div class="py-12">
+        <x-alert>
+        </x-alert>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 mb-1">
@@ -20,6 +22,7 @@
                             <th>Telefone</th>
                             <th>Email</th>
                             <th>Usuário</th>
+                            <th></th>
                             <th></th>
                         </tr>
                     </thead>
@@ -39,7 +42,8 @@
                                 @else
                                     <td>?</td>
                                 @endif
-                                <td><a href="{{route('customer.view', ['id' => $user->id])}}"><img src="{{ asset('img/eng.png') }}" width="30px" height="30px"></a></td>
+                                <td><a href="{{route('customer.view', ['id' => $user->id])}}"><img src="{{ asset('img/info.svg') }}" ></a></td>
+                                <td><a href="{{route('customer.delete', ['id' => $user->id])}}"><img src="{{ asset('img/trash-2.svg') }}" ></a></td>
                             </tr>
                         @endforeach
                     </tbody>

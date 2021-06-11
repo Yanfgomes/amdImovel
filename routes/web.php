@@ -51,12 +51,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/', [UserController::class, 'index'])->name('index');
         Route::get('/new', [UserController::class, 'create'])->name('create');
         Route::post('/store', [UserController::class, 'store'])->name('store');
-        Route::get('/view/{id}', [UserController::class, 'view'])->where('n1','[0-9]+')->name('view');
+        Route::get('/view/{id}', [UserController::class, 'view'])->where('id','[0-9]+')->name('view');
+        Route::put('/view', [UserController::class, 'update'])->name('update');
+        Route::get('/delete/{id}', [UserController::class, 'delete'])->where('id','[0-9]+')->name('delete');
     });
 
 });
-
-
-
-
-

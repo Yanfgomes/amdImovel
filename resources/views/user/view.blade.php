@@ -2,12 +2,16 @@
     <x-slot name="header">
     </x-slot>
     <div class="py-12">
+        <x-alert>
+        </x-alert>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <form action="{{route('customer.update')}}" method="post">
+                @method("put")
                 @csrf
+                <input type="hidden" name="id" value="{{$user->id}}">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200 mb-1">
-                        Atualização de Registro
+                        Atualização de Usuário
                     </div>
                     <div class="p-6 bg-white border-b border-gray-200 mb-1">
                         <input type="text" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 mx-2" name="cpf" id="cpf" placeholder="cpf" value="{{$user->cpf}}" required>

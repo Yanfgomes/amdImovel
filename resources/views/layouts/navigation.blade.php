@@ -92,7 +92,7 @@
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('customer')">
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('customer.*')">
                 {{ __('Customer') }}
             </x-responsive-nav-link>
         </div>
