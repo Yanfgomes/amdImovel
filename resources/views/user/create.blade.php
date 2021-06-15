@@ -13,16 +13,19 @@
                         Informações de Cadastro
                     </div>
                     <div class="p-6 bg-white border-b border-gray-200 mb-1">
+                        <x-label for="cpf" :value="__('Informações Pessoais:')" class="mx-2" />
                         <input type="text" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 mx-2" name="cpf" id="cpf" placeholder="cpf" required>
                         <input type="text" class="w-80 rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 mx-2" name="name" id="name" placeholder="name" required>
                         <input type="text" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 mx-2" name="phone" id="phone" placeholder="Phone" required>
                         <input type="email" class="w-80 rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 mx-2" name="email" id="email" placeholder="Email" required>
                     </div>
                     <div class="p-6 bg-white border-b border-gray-200 mb-1">
+                        <x-label for="password" :value="__('Senha:')" class="mx-2" />
                         <input type="password" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 mx-2" name="password" id="password" placeholder="Password" required>
                         <input type="password" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 mx-2" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" required>
                     </div>
                     <div class="p-6 bg-white border-b border-gray-200 mb-1">
+                        <x-label for="permission" :value="__('Permissão:')" class="mx-2" />
                         <div class="mt-4">
                             <input type="radio" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mx-2" name="permission" value="1" required> Administrador
                         </div>

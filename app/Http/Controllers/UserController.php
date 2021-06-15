@@ -81,9 +81,11 @@ class UserController extends Controller
             $user->name=$request->name;
             $user->email=$request->email;
             $user->phone=$request->phone;
-            $user->adm=$request->permission==1?1:0;
-            $user->customer=$request->permission==2?1:0;
-            $user->lessee=$request->permission==3?1:0;
+            if(auth()->user()->adm==1){
+                $user->adm=$request->permission==1?1:0;
+                $user->customer=$request->permission==2?1:0;
+                $user->lessee=$request->permission==3?1:0;
+            }
             $user->save();
 
             if(auth()->user()->adm==1)

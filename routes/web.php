@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ImmobileController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
@@ -56,4 +57,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/delete/{id}', [UserController::class, 'delete'])->where('id','[0-9]+')->name('delete');
     });
 
+    Route::prefix('immobiles')->name('immobiles.')->group(function()
+    {
+        Route::get('/', [ImmobileController::class, 'index'])->name('index');
+        Route::get('/new', [ImmobileController::class, 'create'])->name('create');
+        Route::post('/store', [ImmobileController::class, 'store'])->name('store');
+    });
 });

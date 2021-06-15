@@ -22,7 +22,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('immobile')">
+                    <x-nav-link :href="route('immobiles.index')" :active="request()->routeIs('immobiles.*')">
                         {{ __('Imóveis') }}
                     </x-nav-link>
                 </div>
@@ -92,12 +92,12 @@
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('customer.*')">
+            <x-responsive-nav-link :href="route('customer.index')" :active="request()->routeIs('customer.*')">
                 {{ __('Customer') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('immobile')">
+            <x-responsive-nav-link :href="route('immobiles.index')" :active="request()->routeIs('immobiles.*')">
                 {{ __('Immobile') }}
             </x-responsive-nav-link>
         </div>
