@@ -62,5 +62,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/', [ImmobileController::class, 'index'])->name('index');
         Route::get('/new', [ImmobileController::class, 'create'])->name('create');
         Route::post('/store', [ImmobileController::class, 'store'])->name('store');
+        Route::get('/view/{id}', [ImmobileController::class, 'view'])->where('id','[0-9]+')->name('view');
+        Route::put('/view', [ImmobileController::class, 'update'])->name('update');
+        Route::post('/file', [ImmobileController::class, 'fileStorage'])->name('file');
     });
 });

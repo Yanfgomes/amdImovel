@@ -43,8 +43,7 @@ class UserController extends Controller
             //die(json_encode($array));
             $user = User::create($array);
     
-            $users=User::all();
-            return view('user.index', compact('users'));
+            return redirect()->route('customer.index');
         }
         else{
             return back()->with('error','Acesso negado');
@@ -106,7 +105,7 @@ class UserController extends Controller
                 return back()->with('info','Contate o suporte para exclusão de usuário Administrador');
             else
                 $user->delete();
-            return redirect()->route('customer.index');
+            return back()->with('success','Sucesso');
         }
         else
             return back()->with('error','Acesso negado');

@@ -25,6 +25,8 @@
                             <th>Bairro</th>
                             <th>Endereço</th>
                             <th>Aluguel</th>
+                            <th>Status</th>
+                            <th>Locatário</th>
                             <th>&nbsp;</th>
                             <th>&nbsp;</th>
                         </tr>
@@ -33,12 +35,14 @@
                         @foreach ($immobiles as $immobile)
                             <tr>
                                 <td>{{$immobile->user->name}}</td>
-                                <td>{{$immobile->uf->name}}</td>
+                                <td>{{$immobile->uf->uf}}</td>
                                 <td>{{$immobile->city}}</td>
                                 <td>{{$immobile->district}}</td>
                                 <td>{{$immobile->street." ".$immobile->number.", ".$immobile->complement}}</td>
                                 <td>R$ {{number_format($immobile->rent,2,",",".")}}</td>
-                                <td><a href="{{route('customer.view', ['id' => $immobile->id])}}"><img src="{{ asset('img/info.svg') }}" ></a></td>
+                                <td>{{$immobile->status}}</td>
+                                <td>{{$immobile->lessee->name??''}}</td>
+                                <td><a href="{{route('immobiles.view', ['id' => $immobile->id])}}"><img src="{{ asset('img/info.svg') }}" ></a></td>
                                 <td><a href="{{route('customer.delete', ['id' => $immobile->id])}}"><img src="{{ asset('img/trash-2.svg') }}" ></a></td>
                             </tr>
                         @endforeach

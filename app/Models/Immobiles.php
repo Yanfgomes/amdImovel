@@ -15,6 +15,8 @@ class Immobiles extends Model
     
     protected $fillable = [
         'user_id',
+        'lessee_id',
+        'status',
         'cep',
         'uf_id',
         'city',
@@ -36,5 +38,11 @@ class Immobiles extends Model
     {
         //1 imóvel está associado a 1 uf
         return $this->belongsTo(Ufs::class);
+    }
+    
+    public function lessee()
+    {
+        //1 Imóvel está associado a 1 locatário
+        return $this->belongsTo(User::class, 'lessee_id');
     }
 }
