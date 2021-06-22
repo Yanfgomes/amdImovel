@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Immobiles;
 use App\Models\User;
 use App\Models\Ufs;
+use App\Models\Image;
 
 class ImmobileController extends Controller
 {
@@ -68,7 +69,8 @@ class ImmobileController extends Controller
             $users=User::where('customer',1)->get();
             $lessees=User::where('lessee',1)->get();
             $ufs=Ufs::all();
-            return view('immobile.view',compact(['immobile','users','ufs','lessees']));
+            $images=Image::where('immobile_id',$id)->get();
+            return view('immobile.view',compact(['immobile','users','ufs','lessees','images']));
         }
         else{
             return view('immobile.viewCustomer',compact(['immobile']));

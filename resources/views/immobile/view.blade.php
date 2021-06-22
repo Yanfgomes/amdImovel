@@ -6,11 +6,11 @@
         <x-alert>
         </x-alert>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <form action="{{route('immobiles.update')}}" method="post">
-                @method("put")
-                @csrf
-                <input type="hidden" name="id" value="{{$immobile->id}}">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <form action="{{route('immobiles.update')}}" method="post">
+                    @method("put")
+                    @csrf
+                    <input type="hidden" name="id" value="{{$immobile->id}}">
                     <div class="p-6 bg-white border-b border-gray-200 mb-1">
                         Atualização de Imóvel
                     </div>
@@ -77,79 +77,41 @@
                             <br>
                         </div>
                     </div>
-                    
-                    <div class="p-6 bg-white border-b border-gray-200 mb-1">
-                        Documentos
-                    </div>
-                    <div class="p-6 bg-white border-b border-gray-200 mb-1">
-                        
-                        <div class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-3  right-0 mt-4">
-                            <img class="pr-1" src="{{ asset('img/file.svg') }}" >
-                            <div class="block">
-                                <div class="float-right div-botao-x -m-3.5">
+                </form>
+                
+                <div class="p-6 bg-white border-b border-gray-200 mb-1">
+                    Documentos
+                </div>
+                <div class="p-6 bg-white border-b border-gray-200 mb-1">
+                    @if ($images->count()>0)
+                        @foreach ($images as $image)
+                            <div class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-3  right-0 mt-4">
+                                <a href="{{ asset($image->image) }}" target="_BLANK"><img class="pr-1" src="{{ asset('img/file.svg') }}" ></a>
+                                <div class="block">
+                                    <a href="{{ route('immobiles.image.delete', ['id' => $image->id]) }}"><div class="float-right div-botao-x -m-3.5"></div></a>
+                                    <a href="{{ asset($image->image) }}" target="_BLANK">
+                                        <p>contrato</p>
+                                        <p>16/06/2021</p>
+                                    </a>
                                 </div>
-                                <p>contrato</p>
-                                <p>16/06/2021</p>
                             </div>
-                        </div>
-                        
-                        <div class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-3  right-0 mt-4">
-                            <img class="pr-1" src="{{ asset('img/file.svg') }}" >
-                            <div class="block">
-                                <div class="float-right div-botao-x -m-3.5">
-                                </div>
-                                <p>contrato</p>
-                                <p>16/06/2021</p>
-                            </div>
-                        </div>
-                        
-                        <div class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-3  right-0 mt-4">
-                            <img class="pr-1" src="{{ asset('img/file.svg') }}" >
-                            <div class="block">
-                                <div class="float-right div-botao-x -m-3.5">
-                                </div>
-                                <p>contrato</p>
-                                <p>16/06/2021</p>
-                            </div>
-                        </div>
-                        
-                        <div class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-3  right-0 mt-4">
-                            <img class="pr-1" src="{{ asset('img/file.svg') }}" >
-                            <div class="block">
-                                <div class="float-right div-botao-x -m-3.5">
-                                </div>
-                                <p>contrato</p>
-                                <p>16/06/2021</p>
-                            </div>
-                        </div>
-                        
-                        <div class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-3  right-0 mt-4">
-                            <img class="pr-1" src="{{ asset('img/file.svg') }}" >
-                            <div class="block">
-                                <div class="float-right div-botao-x -m-3.5">
-                                </div>
-                                <p>contrato</p>
-                                <p>16/06/2021</p>
-                            </div>
-                        </div>
-                        
-                        <div class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-3  right-0 mt-4">
-                            <img class="pr-1" src="{{ asset('img/file.svg') }}" >
-                            <div class="block">
-                                <div class="float-right div-botao-x -m-3.5">
-                                </div>
-                                <p>contrato</p>
-                                <p>16/06/2021</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 bg-white border-b border-gray-200 mb-1">
-                        Anexar Documentos
-                    </div>
-                    <div class="p-6 bg-white border-b border-gray-200 mb-1">
-                        
+                        @endforeach
+                    @else
+                        <p class="block font-medium text-sm text-gray-700 mx-2">Nenhum arquivo anexado</p>
+                    @endif
+                </div>
+                <div class="p-6 bg-white border-b border-gray-200 mb-1">
+                    Anexar Documentos
+                </div>
+                <div class="p-6 bg-white border-b border-gray-200 mb-1">
+                    <form action="{{ route('immobiles.image') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+
+                        <input type="hidden" name="immobile_id" value="{{$immobile->id}}">
+
                         <select name="type" id="type" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-2 mx-2" required>
                             <option value="Contrato">Contrato</option>
+                            <option value="Identidade">Identidade</option>
                         </select>
 
                         <input type="file" class="shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 mx-2" name="file" id="file" required>
@@ -160,9 +122,9 @@
                             </button>
                             <br>
                         </div>
-                    </div>
+                    </form> 
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 

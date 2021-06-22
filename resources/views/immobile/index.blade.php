@@ -43,7 +43,7 @@
                                 <td>{{$immobile->status}}</td>
                                 <td>{{$immobile->lessee->name??''}}</td>
                                 <td><a href="{{route('immobiles.view', ['id' => $immobile->id])}}"><img src="{{ asset('img/info.svg') }}" ></a></td>
-                                <td><a href="{{route('customer.delete', ['id' => $immobile->id])}}"><img src="{{ asset('img/trash-2.svg') }}" ></a></td>
+                                <td><a href="{{route('immobiles.delete', ['id' => $immobile->id])}}"><img src="{{ asset('img/trash-2.svg') }}" ></a></td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -54,7 +54,9 @@
 
     <x-slot name="script">
         $(document).ready(function() {
-            $('#tableImmobiles').DataTable();
+            $('#tableImmobiles').DataTable({
+                "scrollX": true
+            });
         } );
     </x-slot>
 </x-app-layout>

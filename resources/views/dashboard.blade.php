@@ -15,11 +15,13 @@
                         Administração de imóvel e assessoria jurídica
                     </h2>
                 </div>
-                <img src="{{ asset('img/'.$imagem.'.jpg') }}" class="float-right pt-1" width="720px" height="405px">
-                <h1 class="font-semibold text-6xl text-gray-800 leading-tight text-center py-14">
-                    {{$mensagem}},<br>
-                    {{$firstName}}
-                </h1>
+                <img src="{{ asset('img/'.$imagem.'.jpg') }}" class="pt-1 -mr-9 container2 img-dashboard" >
+                <div class="grid items-center" style="height:405px">
+                    <h1 class="font-semibold text-6xl text-gray-800 text-center container2" style="word-wrap: break-word">
+                        {{$mensagem}},<br>
+                        {{$firstName}}
+                    </h1>
+                </div>
             </div>
         </div>
     </div>

@@ -27,7 +27,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('financial')">
+                    <x-nav-link :href="route('financial.index')" :active="request()->routeIs('financial.*')">
                         {{ __('Financeiro') }}
                     </x-nav-link>
                 </div>
@@ -93,22 +93,22 @@
         </div>
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('customer.index')" :active="request()->routeIs('customer.*')">
-                {{ __('Customer') }}
+                {{ __('Usuários') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('immobiles.index')" :active="request()->routeIs('immobiles.*')">
-                {{ __('Immobile') }}
+                {{ __('Imóveis') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('financial')">
-                {{ __('Financial') }}
+            <x-responsive-nav-link :href="route('financial.index')" :active="request()->routeIs('financial.*')">
+                {{ __('Financeiro') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('request')">
-                {{ __('Request') }}
+                {{ __('Solicitações') }}
             </x-responsive-nav-link>
         </div>
 

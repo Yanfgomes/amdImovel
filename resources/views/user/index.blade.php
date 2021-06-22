@@ -54,7 +54,9 @@
 
     <x-slot name="script">
         $(document).ready(function() {
-            $('#tableUser').DataTable();
+            $('#tableUser').DataTable({
+                "scrollX": true
+            });
         } );
     </x-slot>
 </x-app-layout>

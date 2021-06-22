@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ImmobileController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
@@ -64,6 +66,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/store', [ImmobileController::class, 'store'])->name('store');
         Route::get('/view/{id}', [ImmobileController::class, 'view'])->where('id','[0-9]+')->name('view');
         Route::put('/view', [ImmobileController::class, 'update'])->name('update');
-        Route::post('/file', [ImmobileController::class, 'fileStorage'])->name('file');
+        Route::get('/delete/{id}', [ImmobileController::class, 'delete'])->where('id','[0-9]+')->name('delete');
+        Route::post('/image', [ImageController::class, 'store'])->name('image');
+        Route::get('/image/delete/{id}', [ImageController::class, 'delete'])->name('image.delete');
     });
+    
+    Route::prefix('financial')->name('financial.')->group(function()
+    {
+        Route::get('/', [FinancialController::class, 'index'])->name('index');
+        Route::get('/new', [FinancialController::class, 'create'])->name('create');
+    });
+    
 });
