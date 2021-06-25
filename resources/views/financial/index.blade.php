@@ -14,6 +14,36 @@
                         </button>
                     </a>
                 </div>
+                <div class="p-6 bg-white mb-1">
+                    <table id="tableImmobiles" class="display mt-1" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Endereço</th>
+                                <th>Valor</th>
+                                <th>Status</th>
+                                <th>Data</th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($financials as $fatura)
+                                {{$fatura->financial->count()}}
+                                @foreach ($fatura->financial as $financial)
+                                    <tr>
+                                        <td>{{$fatura->street." ".$fatura->number.", ".$fatura->complement}}</td>
+                                        <td>R$ {{number_format($financial->value,2,",",".")}}</td>
+                                        <td>{{$financial->status}}</td>
+                                        <td>{{$immobile->lessee->name??''}}</td>
+                                        <td><a href="{{route('immobiles.view', ['id' => $immobile->id])}}"><img src="{{ asset('img/info.svg') }}" ></a></td>
+                                        <td><a href="{{route('immobiles.delete', ['id' => $immobile->id])}}"><img src="{{ asset('img/trash-2.svg') }}" ></a></td>
+                                    </tr>
+                                @endforeach
+                            @endforeach
+                        </tbody>
+                    </table>
+                    
+                </div>
             </div>
         </div>
     </div>

@@ -33,7 +33,7 @@
                     <br>
                     <input type="text" class="w-80 rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-2 mx-2" name="complement" id="complement" placeholder="Complemento" value="{{$immobile->complement}}" required>
                 </div>
-                <div class="p-6 bg-white border-b border-gray-200 mb-1">
+                <div class="p-6 bg-white mb-1">
                     <x-label for="rent" :value="__('Valor do Aluguel:')" class="mx-2" />
                     <input type="text" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 mx-2" name="rent" id="rent" placeholder="Aluguel" value="{{number_format($immobile->rent,2,",",".")}}" required>
                     

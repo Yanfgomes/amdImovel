@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
 use App\Models\Ufs;
+use App\Models\Financial;
 
 class Immobiles extends Model
 {
@@ -44,5 +45,10 @@ class Immobiles extends Model
     {
         //1 Imóvel está associado a 1 locatário
         return $this->belongsTo(User::class, 'lessee_id');
+    }
+
+    public function financial(){
+        //1 imóvel está associado a várias faturas
+        return $this->hasMany(Financial::class, 'immobile_id');
     }
 }

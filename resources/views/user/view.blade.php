@@ -25,7 +25,7 @@
                         <input type="password" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 mx-2" name="password" id="password" placeholder="Password">
                         <input type="password" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 mx-2" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password">
                     </div>
-                    <div class="p-6 bg-white border-b border-gray-200 mb-1">
+                    <div class="p-6 bg-white mb-1">
                         @if (auth()->user()->adm==1)
                             <x-label for="permission" :value="__('Permissão:')" class="mx-2" />
                             <div class="mt-4">

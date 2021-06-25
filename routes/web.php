@@ -75,6 +75,7 @@ Route::group(['middleware' => ['auth']], function () {
     {
         Route::get('/', [FinancialController::class, 'index'])->name('index');
         Route::get('/new', [FinancialController::class, 'create'])->name('create');
+        Route::post('/store', [FinancialController::class, 'store'])->name('store');
     });
     
 });

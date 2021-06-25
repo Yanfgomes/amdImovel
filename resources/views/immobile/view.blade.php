@@ -103,7 +103,7 @@
                 <div class="p-6 bg-white border-b border-gray-200 mb-1">
                     Anexar Documentos
                 </div>
-                <div class="p-6 bg-white border-b border-gray-200 mb-1">
+                <div class="p-6 bg-white mb-1">
                     <form action="{{ route('immobiles.image') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
