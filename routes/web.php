@@ -74,8 +74,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::prefix('financial')->name('financial.')->group(function()
     {
         Route::get('/', [FinancialController::class, 'index'])->name('index');
+        Route::post('/', [FinancialController::class, 'search'])->name('index');
         Route::get('/new', [FinancialController::class, 'create'])->name('create');
         Route::post('/store', [FinancialController::class, 'store'])->name('store');
+        Route::get('/view/{id}', [FinancialController::class, 'view'])->where('id','[0-9]+')->name('view');
+        Route::get('/delete/{id}', [FinancialController::class, 'delete'])->where('id','[0-9]+')->name('delete');
     });
     
 });

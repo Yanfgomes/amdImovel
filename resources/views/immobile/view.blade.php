@@ -90,7 +90,7 @@
                                 <div class="block">
                                     <a href="{{ route('immobiles.image.delete', ['id' => $image->id]) }}"><div class="float-right div-botao-x -m-3.5"></div></a>
                                     <a href="{{ asset($image->image) }}" target="_BLANK">
-                                        <p>contrato</p>
+                                        <p>{{$image->type}}</p>
                                         <p>16/06/2021</p>
                                     </a>
                                 </div>
