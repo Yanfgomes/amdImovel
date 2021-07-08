@@ -7,6 +7,7 @@ use App\Models\Immobiles;
 use App\Models\User;
 use App\Models\Ufs;
 use App\Models\Image;
+use App\Models\Financial;
 
 class ImmobileController extends Controller
 {
@@ -63,6 +64,8 @@ class ImmobileController extends Controller
 
     public function view($id){
         $immobile=Immobiles::find($id);
+        if(!isset($immobile))
+            return back()->with('warning','Imóvel não encontrado');
         if(auth()->user()->adm==0 && $immobile->user->id<>auth()->user()->id)
             return back()->with('warning','Acesso Negado');
         if(auth()->user()->adm==1){
@@ -111,7 +114,10 @@ class ImmobileController extends Controller
             return back()->with('error','Acesso negado');
     }
 
-    public function fileStorage(Request $request){
-
+    public function dashboard($id, Request $request){
+        $financials=Financial::where('immobile_id',$id)->with('type')->with('status')->get();
+        $financialCharts=Financial::where('immobile_id',$id)->where('status_id',2)->with('type:name');
+        die(json_encode($financialCharts));
+        return view('immobile.dashboard');
     }
 }

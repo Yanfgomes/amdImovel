@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>Sistema</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -23,6 +23,10 @@
         <script src="{{ asset('js/datatable.min.js') }}" ></script>
         <script src="{{ asset('js/jquery.mask.min.js') }}" ></script>
         <script src="{{ asset('js/bootstrap.js') }}" ></script>
+                
+        <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+        <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+        <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
 
     </head>
     <body class="font-sans antialiased">

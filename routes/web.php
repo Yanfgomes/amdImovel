@@ -69,6 +69,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/delete/{id}', [ImmobileController::class, 'delete'])->where('id','[0-9]+')->name('delete');
         Route::post('/image', [ImageController::class, 'store'])->name('image');
         Route::get('/image/delete/{id}', [ImageController::class, 'delete'])->name('image.delete');
+        Route::post('/view/{id}/financial', [ImmobileController::class, 'dashboard'])->where('id','[0-9]+')->name('dashboard');
     });
     
     Route::prefix('financial')->name('financial.')->group(function()
@@ -78,6 +79,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/new', [FinancialController::class, 'create'])->name('create');
         Route::post('/store', [FinancialController::class, 'store'])->name('store');
         Route::get('/view/{id}', [FinancialController::class, 'view'])->where('id','[0-9]+')->name('view');
+        Route::put('/view', [FinancialController::class, 'update'])->name('update');
         Route::get('/delete/{id}', [FinancialController::class, 'delete'])->where('id','[0-9]+')->name('delete');
     });
     

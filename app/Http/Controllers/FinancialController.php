@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\DB;
 
 class FinancialController extends Controller
 {
+    use ImageUpload;
     
     protected $month;
 
@@ -158,15 +159,16 @@ class FinancialController extends Controller
         if(auth()->user()->adm==1){
             if (isset($request->file) || $request->status==2) {
                 $this->validate($request,[
-                    'file'        =>  'required|mimes:pdf,jpeg,png,jpg,gif|max:4096'
+                    'file' => 'required',
+                    'file.*' => 'mimes:jpeg,jpg,png,gif,csv,txt,pdf|max:4096'
                 ]);
             }
-            
+            dd($request);
             $financial = new Financial;
     
             $financial->document = $request->file;
             if($financial->document){
-            try {
+                try {
                     $filePath = $this->UserImageUpload($financial->document);
                     $financial->document = $filePath;
     
@@ -199,6 +201,8 @@ class FinancialController extends Controller
         ->with('type')
         ->first();
         
+        if($financial->status_id==2)
+            return back()->with('warning','Fatura já está paga');
         if(auth()->user()->adm==0 && $financial->immobile->user_id<>auth()->user()->id)
             return back()->with('warning','Acesso Negado');
         if(auth()->user()->adm==1){
@@ -224,4 +228,43 @@ class FinancialController extends Controller
         else
             return back()->with('error','Acesso negado');
     }
+    
+    public function update(Request $request){
+        if(auth()->user()->adm==1){
+            if (isset($request->file) || $request->status==2) {
+                $this->validate($request,[
+                    'file'        =>  'required|mimes:pdf,jpeg,png,jpg,gif|max:4096'
+                ]);
+            }
+            
+            $financial = Financial::Find($request->id);
+    
+            if($request->file){
+                try {
+                    $financial->document = $request->file;
+                    $filePath = $this->UserImageUpload($financial->document);
+                    $financial->document = $filePath;
+    
+                } catch (Exception $e) {
+                    return redirect()->back()->with('error', 'Ocorreu um erro');
+                }
+            }
+
+            $value=str_replace(",",".",str_replace(".","",$request->value));
+            if($request->type>1)
+                $value*=-1;
+            $financial->type_id = $request->type;
+            $financial->immobile_id = $request->immobile;
+            $financial->value = $value;
+            $financial->status_id = $request->status;
+            if($request->status==2)
+                $financial->paid = date("Y-m-d H:i:s");
+            $financial->save();
+
+            return redirect()->route("financial.index");
+        }
+        else
+            return back()->with('warning','Acesso Negado');
+    }
+
 }

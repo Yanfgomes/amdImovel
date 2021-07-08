@@ -96,12 +96,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($financials as $fatura)
+                                @foreach ($financials as $immobile)
                                     <tr>
-                                        <td>{{$fatura->street." ".$fatura->number.", ".$fatura->complement}}</td>
-                                        <td>{{$fatura->financial->count()}}</td>
-                                        <td>R$ {{number_format($fatura->financial->sum('value'))}}</td>
-                                        <td><a href="{{route('immobiles.view', ['id' => $fatura->id])}}"><img src="{{ asset('img/info.svg') }}" ></a></td>
+                                        <td>{{$immobile->street." ".$immobile->number.", ".$immobile->complement}}</td>
+                                        <td>{{$immobile->financial->count()}}</td>
+                                        <td>R$ {{number_format($immobile->financial->sum('value'))}}</td>
+                                        <td>
+                                            <form action="{{route('immobiles.dashboard', ['id' => $immobile->id])}}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="month" value="{{$month}}">
+                                                <button>
+                                                    <img src="{{ asset('img/info.svg') }}" >
+                                                </button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
