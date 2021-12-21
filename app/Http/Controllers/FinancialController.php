@@ -163,11 +163,11 @@ class FinancialController extends Controller
                     'file.*' => 'mimes:jpeg,jpg,png,gif,csv,txt,pdf|max:4096'
                 ]);
             }
-            dd($request);
+            //dd($request);
             $financial = new Financial;
     
             $financial->document = $request->file;
-            if($financial->document){
+            if($financial->document && $request->status==2){
                 try {
                     $filePath = $this->UserImageUpload($financial->document);
                     $financial->document = $filePath;
@@ -183,6 +183,8 @@ class FinancialController extends Controller
             $financial->type_id = $request->type;
             $financial->immobile_id = $request->immobile;
             $financial->value = $value;
+            $financial->cycle = $request->cycle."-01";
+            $financial->due = $request->due;
             $financial->status_id = $request->status;
             if($request->status==2)
                 $financial->paid = date("Y-m-d H:i:s");
@@ -195,7 +197,7 @@ class FinancialController extends Controller
     }
 
     public function view($id){
-        $financial=Financial::find($id)
+        $financial=Financial::where('id',$id)
         ->with('immobile')
         ->with('status')
         ->with('type')
@@ -233,13 +235,14 @@ class FinancialController extends Controller
         if(auth()->user()->adm==1){
             if (isset($request->file) || $request->status==2) {
                 $this->validate($request,[
-                    'file'        =>  'required|mimes:pdf,jpeg,png,jpg,gif|max:4096'
+                    'file'        =>  'required|mimes:pdf,jpeg,png,jpg,gif|max:4096',
+                    'file.*' => 'mimes:jpeg,jpg,png,gif,csv,txt,pdf|max:4096'
                 ]);
             }
             
             $financial = Financial::Find($request->id);
     
-            if($request->file){
+            if($request->file && $request->status==2){
                 try {
                     $financial->document = $request->file;
                     $filePath = $this->UserImageUpload($financial->document);
@@ -256,6 +259,8 @@ class FinancialController extends Controller
             $financial->type_id = $request->type;
             $financial->immobile_id = $request->immobile;
             $financial->value = $value;
+            $financial->cycle = $request->cycle."-01";
+            $financial->due = $request->due;
             $financial->status_id = $request->status;
             if($request->status==2)
                 $financial->paid = date("Y-m-d H:i:s");

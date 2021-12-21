@@ -55,7 +55,7 @@
                                     <th>Endereço</th>
                                     <th>Valor</th>
                                     <th>Fatura</th>
-                                    <th>Data</th>
+                                    <th>Vencimento</th>
                                     <th>&nbsp;</th>
                                     <th>&nbsp;</th>
                                 </tr>
@@ -72,7 +72,14 @@
                                         <td>{{$bill->immobile->street." ".$bill->immobile->number.", ".$bill->immobile->complement}}</td>
                                         <td>R$ {{number_format($valor,2,",",".")}}</td>
                                         <td>{{$bill->type->name}}</td>
-                                        <td>{{$bill->created_at->format("d/m/Y")}}</td>
+                                        <td>
+                                            @php
+                                            if(!empty($bill->due)){
+                                                $due=new DateTime($bill->due);
+                                                echo $due->format("d/m/Y"); 
+                                            }
+                                            @endphp
+                                        </td>
                                         <td><a href="{{route('financial.view', ['id' => $bill->id])}}"><img src="{{ asset('img/info.svg') }}" ></a></td>
                                         <td><a href="{{route('financial.delete', ['id' => $bill->id])}}"><img src="{{ asset('img/trash-2.svg') }}" ></a></td>
                                     </tr>

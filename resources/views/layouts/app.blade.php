@@ -24,10 +24,13 @@
         <script src="{{ asset('js/jquery.mask.min.js') }}" ></script>
         <script src="{{ asset('js/bootstrap.js') }}" ></script>
                 
-        <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-        <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
-        <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 
+        <style type="text/css">
+            {{$style??""}}
+        </style>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

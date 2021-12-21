@@ -83,4 +83,14 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/delete/{id}', [FinancialController::class, 'delete'])->where('id','[0-9]+')->name('delete');
     });
     
+    Route::prefix('request')->name('request.')->group(function()
+    {
+        Route::get('/', [RequestController::class, 'index'])->name('index');
+        Route::post('/', [RequestController::class, 'search'])->name('index');
+        Route::get('/new', [RequestController::class, 'create'])->name('create');
+        Route::post('/store', [RequestController::class, 'store'])->name('store');
+        Route::get('/view/{id}', [RequestController::class, 'view'])->where('id','[0-9]+')->name('view');
+        Route::put('/view', [RequestController::class, 'update'])->name('update');
+        Route::get('/delete/{id}', [RequestController::class, 'delete'])->where('id','[0-9]+')->name('delete');
+    });
 });

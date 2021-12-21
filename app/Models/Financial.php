@@ -20,6 +20,8 @@ class Financial extends Model
         'value',
         'status',
         'paid',
+        'cycle',
+        'due',
         'document'
     ];
 

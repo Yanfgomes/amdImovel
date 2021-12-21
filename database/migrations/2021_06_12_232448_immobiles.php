@@ -18,7 +18,7 @@ class Immobiles extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('lessee_id')->constrained('users');
+            $table->foreignId('lessee_id')->constrained('users')->nullable();
             $table->string('status');
             $table->string('cep');
             $table->foreignId('uf_id')->constrained('list_uf');

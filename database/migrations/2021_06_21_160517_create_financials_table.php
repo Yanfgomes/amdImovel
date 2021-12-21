@@ -18,6 +18,8 @@ class CreateFinancialsTable extends Migration
             $table->foreignId('type_id')->constrained('list_types');
             $table->foreignId('immobile_id')->constrained('immobiles');
             $table->float('value');
+            $table->date('cycle');
+            $table->date('due');
             $table->foreignId('status_id')->constrained('list_status');
             $table->dateTime('paid')->nullable();
             $table->string('document')->nullable();

@@ -8,6 +8,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <form action="{{route('financial.update')}}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method("PUT")
                 <input type="hidden" name="id" value="{{$financial->id}}">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200 mb-1">
@@ -47,7 +48,13 @@
 
                         <x-label for="value" :value="__('Valor:')" class="mx-2 my-2 pt-1" />
                         <input type="text" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 mx-2" name="value" id="value" placeholder="Valor" value="{{number_format($value,2,',','.')}}" required>
+  
+                        <x-label for="cycle" :value="__('Período:')" class="mx-2 my-2 pt-1" />
+                        <input type="month" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 mx-2" name="cycle" id="cycle" value="{{substr($financial->cycle,0,7)}}" required>
 
+                        <x-label for="due" :value="__('Vencimento:')" class="mx-2 my-2 pt-1" />
+                        <input type="date" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 mx-2" name="due" id="due" value="{{$financial->due}}" required>
+                        
                         <x-label for="status" :value="__('Status:')" class="mx-2 my-2 pt-1" />
                         <select class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 mx-2" name="status" id="status" required>
                             <option value="">Selecione o Status</option>

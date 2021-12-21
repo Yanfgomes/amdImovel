@@ -9,7 +9,7 @@ use App\Models\Ufs;
 use App\Models\Image;
 use App\Models\Financial;
 
-class ImmobileController extends Controller
+class RequestController extends Controller
 {
     public function index(){
         if(auth()->user()->adm==1)
